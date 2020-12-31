@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useLocalStorage from "./api/useLocalStorage";
+import useLocalStorage from "./customHooks/useLocalStorage";
 import { getSwapiData } from "./api/getSwapiData";
 import { firstPartAnswer, secondPartAnswer } from "./api/answers";
 import MaxPopTable from "./component/maxPopTable";
