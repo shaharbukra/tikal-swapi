@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useLocalStorage from "./customHooks/useLocalStorage";
-import { getSwapiData } from "./api/getSwapiData";
+import { getSwapiData } from "./api/helper";
 import { firstPartAnswer, secondPartAnswer } from "./api/answers";
 import MaxPopTable from "./component/MaxPopTable/maxPopTable";
 import PlanetChartBar from "./component/PlanetChartBar/planetChartBar";
