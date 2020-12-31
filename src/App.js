@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "./customHooks/useLocalStorage";
 import { getSwapiData } from "./api/getSwapiData";
 import { firstPartAnswer, secondPartAnswer } from "./api/answers";
-import MaxPopTable from "./component/maxPopTable";
-import PlanetChartBar from "./component/planetChartBar";
+import MaxPopTable from "./component/MaxPopTable/maxPopTable";
+import PlanetChartBar from "./component/PlanetChartBar/planetChartBar";
 
 function App() {
   // trigger when data finish loading
