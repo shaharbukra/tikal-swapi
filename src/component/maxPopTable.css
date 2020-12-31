@@ -1,0 +1,9 @@
+.tableData,
+.tableData td,
+.tableData th {
+  border: 1px solid black;
+}
+.tableData {
+  width: 100%;
+  border-collapse: collapse;
+}
