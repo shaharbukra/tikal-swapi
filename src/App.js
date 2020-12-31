@@ -63,9 +63,9 @@ function App() {
 
   return (
     <div className="App">
-      <MaxPopTable dispalyData={dispalyData} />
+      <MaxPopTable data={dispalyData} />
 
-      <PlanetChartBar displayChart={displayChart} />
+      <PlanetChartBar data={displayChart} />
     </div>
   );
 }
