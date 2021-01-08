@@ -13,11 +13,6 @@ function App() {
   // hold the data for query
   const [swapiData, setSwapiData] = useState({});
 
-  // the final result of the query
-  const [dispalyData, setDispalyData] = useState(null);
-  // the result for the chart
-  const [displayChart, setDisplayChart] = useState([]);
-
   useEffect(() => {
     const fetchSwapiData = async () => {
       if (swapiLocalStorage === null) {
@@ -28,9 +23,10 @@ function App() {
             getSwapiData("planets"),
           ]);
           const [people, vehicles, planets] = result;
-          const swapiDataResponse = { people, vehicles, planets };
-          setSwapiData(swapiDataResponse);
-          setSwapiLocalStorage(swapiDataResponse);
+          const data = { people, vehicles, planets };
+
+          setSwapiData({ data });
+          setSwapiLocalStorage({ data });
 
           setFinishLoading(true);
         } catch (error) {
@@ -48,24 +44,25 @@ function App() {
 
   useEffect(() => {
     if (finishLoading) {
-      // Part 1
-      const answer = firstPartAnswer(swapiData);
-      setDispalyData(answer);
+      const { data } = swapiData;
+      const answers = {
+        maxPopTable: firstPartAnswer(data),
+        chartData: secondPartAnswer(data),
+      };
 
-      // Part 2 - Chart Data
-      const chartData = secondPartAnswer(swapiData);
-      setDisplayChart(chartData);
+      setSwapiData((p) => {
+        return { ...p, answers };
+      });
     }
-    //eslint-disable-next-line
-  }, [finishLoading]);
+  }, [finishLoading, swapiData]);
 
-  if (dispalyData === null) return "Loading...";
+  if (finishLoading === false || swapiData.answers === undefined)
+    return "Loading...";
 
   return (
     <div className="App">
-      <MaxPopTable data={dispalyData} />
-
-      <PlanetChartBar data={displayChart} />
+      <MaxPopTable data={swapiData.answers.maxPopTable} />
+      <PlanetChartBar data={swapiData.answers.chartData} />
     </div>
   );
 }

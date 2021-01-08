@@ -1,5 +1,5 @@
 export const firstPartAnswer = (swapiData) => {
-  const getPilotPlantAndPopFromVehicle = ({ pilots, name }) => {
+  const getPilotPlanetAndPopFromVehicle = ({ pilots, name }) => {
     const planets = pilots.map((pilot) => swapiData.people[pilot].homeworld);
     const population = planets
       .map((planet) => Number(swapiData.planets[planet].population))
@@ -20,9 +20,9 @@ export const firstPartAnswer = (swapiData) => {
 
   const answer = Object.values(swapiData.vehicles)
     .filter((vehicle) => vehicle.pilots.length)
-    .map(getPilotPlantAndPopFromVehicle)
+    .map(getPilotPlanetAndPopFromVehicle)
     .filter((p) => !isNaN(p.population))
-    .sort((plant1, plant2) => plant2.population - plant1.population);
+    .sort((planet1, planet2) => planet2.population - planet1.population);
 
   return answer;
 };
