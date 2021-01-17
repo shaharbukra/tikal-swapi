@@ -1,0 +1,36 @@
+
+.loader {
+  width: 140px;
+  height: 100px;
+  background: radial-gradient(circle, #6c8075 50%, transparent 50%),
+    radial-gradient(circle, #6c8075 50%, transparent 50%),
+    radial-gradient(circle, #6c8075 50%, transparent 50%),
+    radial-gradient(circle, #6c8075 50%, transparent 50%);
+  background-repeat: no-repeat;
+  background-position: 0 50%, 0 50%, 50% 50%, 100% 50%;
+  background-size: 35px 35px;
+  -webkit-animation: move 0.5s both infinite cubic-bezier(0, 0.74, 0.65, 0.71);
+  animation: move 0.5s both infinite cubic-bezier(0, 0.74, 0.65, 0.71);
+}
+
+@-webkit-keyframes move {
+  from {
+    background-position: 0 50%, 0 50%, 50% 50%, 100% 50%;
+    background-size: 5px 5px, 35px 35px, 35px 35px, 35px 35px;
+  }
+  to {
+    background-position: 0 50%, 50% 50%, 100% 50%, 100% 50%;
+    background-size: 35px 35px, 35px 35px, 35px 35px, 5px 5px;
+  }
+}
+
+@keyframes move {
+  from {
+    background-position: 0 50%, 0 50%, 50% 50%, 100% 50%;
+    background-size: 5px 5px, 35px 35px, 35px 35px, 35px 35px;
+  }
+  to {
+    background-position: 0 50%, 50% 50%, 100% 50%, 100% 50%;
+    background-size: 35px 35px, 35px 35px, 35px 35px, 5px 5px;
+  }
+}

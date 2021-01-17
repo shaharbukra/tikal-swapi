@@ -7,7 +7,7 @@ export const firstPartAnswer = (swapiData) => {
 
     return {
       population,
-      vehiclesName: name,
+      name,
       planets: planets.map(
         (planet) =>
           `${swapiData.planets[planet].name} - ${Number(

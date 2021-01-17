@@ -13,8 +13,8 @@ export default function MaxPopTable({ data }) {
         </tr>
         <tr>
           <td>Vehicle name with the largest sum</td>
-          {data.map(({ vehiclesName }, i) => (
-            <td key={i}>{vehiclesName}</td>
+          {data.map(({ name }, i) => (
+            <td key={i}>{name}</td>
           ))}
         </tr>
         <tr>
