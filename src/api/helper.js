@@ -4,31 +4,33 @@ export const getSwapiData = (type) => {
   let currUrl = `${swapiUrl}/${type}`;
   let isLoading = true;
   return new Promise(async (resolve, reject) => {
-    try {
-      let result = [];
+    (async () => {
+      try {
+        let result = [];
 
-      while (isLoading) {
-        const resp = await fetch(currUrl);
-        const data = await resp.json();
+        while (isLoading) {
+          const resp = await fetch(currUrl);
+          const data = await resp.json();
 
-        result = [...result, ...data.results];
+          result = [...result, ...data.results];
 
-        if (data.next === null) {
-          // create key value pair
-          const keyValObject = result.reduce(
-            (obj, item) => ({ ...obj, [item.url]: item }),
-            {}
-          );
+          if (data.next === null) {
+            // create key value pair
+            const keyValObject = result.reduce(
+              (obj, item) => ({ ...obj, [item.url]: item }),
+              {}
+            );
 
-          resolve(keyValObject);
-          isLoading = false;
-          return;
+            resolve(keyValObject);
+            isLoading = false;
+            return;
+          }
+          currUrl = data.next;
         }
-        currUrl = data.next;
+      } catch (error) {
+        reject(error);
       }
-    } catch (error) {
-      reject(error);
-    }
+    })();
   });
 };
 

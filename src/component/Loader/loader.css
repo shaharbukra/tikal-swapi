@@ -1,4 +1,8 @@
-
+.centerLoader {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ececec;
+}
 .loader {
   width: 140px;
   height: 100px;
